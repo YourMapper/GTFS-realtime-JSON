@@ -19,12 +19,12 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-*********
+** ** ** **
 Significant edits to change from web sockets to ajax, new data format,
 added popup infowindows, custom symbols for busses with color and orientation, 
 bus numbers on symbols, layer for stops, layer for routes, onclick show 
 colored layer for one bus, auto refreshing, iOS support.
-*********
+** ** ** **
 
 Intial version (C) and info:
 
