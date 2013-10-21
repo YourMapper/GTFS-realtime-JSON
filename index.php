@@ -64,11 +64,11 @@ Intial version (C) and info:
   
   <div id="mapadoverlay" style="padding-bottom: 5px; text-align: center; border: 0px; z-index: 0; position: absolute; bottom: 13px; right: 165px; font-size: 10px; font-family: Arial; background-color: #000; border: 1px solid #999999; color: white;">Louisville CrimeScore App:<br><a href="http://www.yourmapper.com/safetycheck" title="Louisville SafetyCheck - a CrimeScore rating iPhone app for your current location." target="_blank" style="text-decoration: none;  padding:3px; height: 100%; width:100%;"><img src="safetycheck-logo-sm.png" width="147" height="38" border="0"></a></div>
   
-  <div id="counter" style="padding: 5px; text-align: center; border: 0px; z-index: 0; position: absolute; top: 50px; right: 5px; font-size: 14px; font-family: Arial; background-color: #5886d3; border: 1px solid #999999; color: white; visibility: hidden;">Refresh: 60</div>
-  
-  <div id="routes" style="padding: 5px; text-align: center; border: 0px; z-index: 0; position: absolute; top: 86px; right: 5px; font-size: 14px; font-family: Arial; background-color: #5886d3; border: 1px solid #999999; color: white; visibility: hidden;"><input type="checkbox" id="ShapesLayer"  onClick="toggleShapes();" /> Routes </div>
-  
-  <div id="stops" style="padding: 5px; text-align: center; border: 0px; z-index: 0; position: absolute; top: 123px; right: 5px; font-size: 14px; font-family: Arial; background-color: #5886d3; border: 1px solid #999999; color: white; visibility: hidden;"><input type="checkbox" id="StopsLayer"  onClick="toggleStops();" /> Stops </div>
+  <div id="counter" style="padding: 2px; text-align: center; border: 0px; z-index: 0; position: absolute; top: 50px; right: 5px; font-size: 14px; font-family: Arial; background-color: #000; border: 1px solid #999999; color: white; visibility: hidden; width: 90px; height: 15px;">Refresh: 60</div>
+
+    <div id="routes" style="padding: 2px; text-align: center; border: 0px; z-index: 0; position: absolute; top: 74px; right: 5px; font-size: 14px; font-family: Arial; background-color: #5886d3; border: 1px solid #999999; color: white; visibility: hidden; width: 90px; height: 15px;"><input type="checkbox" id="ShapesLayer"  onClick="toggleShapes();" /> Routes </div>
+
+    <div id="stops" style="padding: 2px; text-align: center; border: 0px; z-index: 0; position: absolute; top: 98px; right: 5px; font-size: 14px; font-family: Arial; background-color: #5886d3; border: 1px solid #999999; color: white; visibility: hidden; width: 90px; height: 15px;"><input type="checkbox" id="StopsLayer"  onClick="toggleStops();" /> Stops </div>
   
 </body>
 </html>
