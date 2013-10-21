@@ -1,4 +1,33 @@
 /*
+
+Copyright (C) 2013 Michael Schnuerle <code@yourmapper.com> www.yourmapper.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+** ** ** **
+Significant edits to change from web sockets to ajax, new data format,
+added popup infowindows, custom symbols for busses with color and orientation, 
+bus numbers on symbols, layer for stops, layer for routes, onclick show 
+colored layer for one bus, auto refreshing, iOS support.
+** ** ** **
+
+Intial version (C) and info:
+
  * Copyright (C) 2012 Brian Ferris <bdferris@onebusaway.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +41,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- 
- Copyright (C) 2013 Michael Schnuerle <code@yourmapper.com> www.yourmapper.com
 
- Significant edits to change from web sockets to ajax, new data format,
- added popup infowindows, custom symbols for busses with color and orientation, 
- bus numbers on symbols, layer for stops, layer for routes, onclick show 
- colored layer for one bus. 
- 
- */
+*/
 
+// Look for *** to know where to replace paths with full URL paths from your own server (required by google for KML overlays)
  
 	var marker;
  var infowindow;
@@ -187,7 +210,9 @@ function Init() {
             //console.log('clear');
             RouteLayer.setMap(null);
         }
-        var routeURL = 'http://dev.yourmapper.com/demo/gtfsrealtime/route.php?trip='+tripid+'&color='+tripcolor+'&rand='+animation_steps;
+        // *** needs to be a full URL to a dynamic KML route generator from your GTFS database. 3 sample route#.kml samples provided
+        var routeURL = 'http://www.yourserver.com/gtfsrealtime/route.php?trip='+tripid+'&color='+tripcolor+'&rand='+animation_steps;
+        
         //animation_steps++;
         //console.log(routeURL);
         RouteLayer = new google.maps.KmlLayer({
@@ -558,9 +583,9 @@ function Init() {
     //var jsonURL = "data.json";
     //var jsonURL = "json.php"; // realtime from bret
     //var jsonURL = "jsonPB.php"; // realtime from TARC
-    var jsonURL = "ymdata.php?key=9494299ff509f2f6b2e7559fa0589735"; // realtime from your mapper database
+    //var jsonURL = "ymdata.php"; // realtime from your mapper database
     
-    //************ NOTE: get your own API key by registering on  www.yourmapper.com ************
+    var jsonURL = "data.json"; // *** static file - you need to make this dynamic from your server
     
     function getRealtimeLocations() {
         $.getJSON( jsonURL, function( data ) {
@@ -620,17 +645,20 @@ function Init() {
 
     //if (!iOS) {
 
-
+        // pre-generated KMZ file of shapes from GTFS feed
+        // *** needs to be full URL from your server - sample provided here
         ShapesLayer = new google.maps.KmlLayer({
-            url: 'http://dev.yourmapper.com/demo/gtfsrealtime/shapes2.kmz',
+            url: 'http://www.yourserver.com/gtfsrealtime/shapes.kmz',
             clickable: false,
             preserveViewport: true,
             suppressInfoWindows: true,
             screenOverlays: false
         });
-
+        
+        // pre-generated KMZ file of stops from GTFS feed
+        // *** needs to be full URL from your server - sample provided here
         StopsLayer = new google.maps.KmlLayer({
-            url: 'http://dev.yourmapper.com/demo/gtfsrealtime/stops7.kmz',
+            url: 'http://www.yourserver.com/gtfsrealtime/stops.kmz',
             clickable: true,
             preserveViewport: true,
             suppressInfoWindows: false,
