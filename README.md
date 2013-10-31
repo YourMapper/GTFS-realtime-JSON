@@ -28,3 +28,7 @@ Before everything works, you need to change some paths in the index.js file.  Se
  
 See the sample-screenshot.png file for how this might look when implemented.
 
+## Use Our API
+
+If you don't want to recreate the wheel, you can use our API calls for bus locations, delays, updates, and routes.  Learn more and
+subscribe here at Mashape: https://www.mashape.com/yourmapper/TARC-realtime#!documentation
